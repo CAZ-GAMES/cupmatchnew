@@ -42,7 +42,6 @@ public class SwappingManager : MonoBehaviour
     {
         if(state == GameState.Swap)
         {
-            print("Called");
             Swap();
             GameManager.Instance.UpdateGameState(GameState.Trying);
         }
@@ -57,6 +56,7 @@ public class SwappingManager : MonoBehaviour
         StartCoroutine(RotateTimed(.5f, GameManager.Instance.clickedOn[1], objDistance));
         //SwapListPos();
         GameManager.Instance.clickedOn.Clear();
+        GameManager.Instance.coolOff = false;
         GameManager.Instance.moves++;
         //GameManager.Instance.UIManager.MoveCountUpdate();
     }
@@ -90,6 +90,8 @@ public class SwappingManager : MonoBehaviour
         if(state == GameState.Check)
         {
             print("Checking");
+            GameManager.Instance.moves++;
+            GameManager.Instance.coolOff = true;
             GameManager.Instance.UpdateGameState(GameState.Trying);
         }
     }

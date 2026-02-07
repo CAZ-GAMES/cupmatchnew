@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public GameState State;
     public static event Action<GameState> OnGameStateChange;
     public int moves;
-
+    public bool coolOff = false;
     public List<GameObject> clickedOn = new();
 
     private void Awake()
