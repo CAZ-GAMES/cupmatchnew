@@ -1,15 +1,30 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+
+using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.Rendering;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField]
+    TextMeshProUGUI moves;
 
+
+    void Awake()
+    {
+        GameManager.OnGameStateChange += ShowScore; 
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        ShowScore();
+        
     }
 
+    void ODestroy()
+    {
+        GameManager.OnGameStateChange -= ShowScore;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -18,14 +33,19 @@ public class UIManager : MonoBehaviour
 
     public void ReloadScene()
     {
-        GameManager.Instance.moves++;
+        GameManager.Instance.coolOff = false;
+        GameManager.Instance.moves = 0;
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         
     }
 
-    void ShowScore()
+    void ShowScore(GameState state)
     {
-        print(GameManager.Instance.moves);
+        // update score after swap switches back to trying
+        if (state == GameState.Trying)
+        {
+            moves.text = "Moves: " + GameManager.Instance.moves;
+        }
     }
 
     public void StartGame()
@@ -35,6 +55,7 @@ public class UIManager : MonoBehaviour
 
     public void CheckButton()
     {
-        GameManager.Instance.UpdateGameState(GameState.Check);
+        if (GameManager.Instance.coolOff == false)
+            GameManager.Instance.UpdateGameState(GameState.Check);
     }
 }
