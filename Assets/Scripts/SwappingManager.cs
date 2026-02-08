@@ -54,7 +54,7 @@ public class SwappingManager : MonoBehaviour
         var objDistance = (GameManager.Instance.clickedOn[0].transform.position + GameManager.Instance.clickedOn[1].transform.position) / 2;
         StartCoroutine(RotateTimed(0.5f, GameManager.Instance.clickedOn[0], objDistance));
         StartCoroutine(RotateTimed(.5f, GameManager.Instance.clickedOn[1], objDistance));
-        //SwapListPos();
+        SwapListPos();
         GameManager.Instance.clickedOn.Clear();
         GameManager.Instance.coolOff = false;
         GameManager.Instance.moves++;
@@ -83,6 +83,20 @@ public class SwappingManager : MonoBehaviour
         }
         // set cups back down
         clicked.transform.position = new Vector3(clicked.transform.position.x, clicked.transform.position.y - 0.25f);
+    }
+
+    public void SwapListPos()
+    {
+        int indexA = ss.outside.FindIndex(c => c.GetComponent<Renderer>().sharedMaterial == GameManager.Instance.clickedOn[0].GetComponent<Renderer>().sharedMaterial);
+        int indexB = ss.outside.FindIndex(c=> c.GetComponent<Renderer>().sharedMaterial == GameManager.Instance.clickedOn[1].GetComponent<Renderer>().sharedMaterial);
+
+        if (indexA == -1 || indexB == -1)
+        {
+            Debug.LogError($"Object not found! indexA: {indexA}, indexB: {indexB}");
+            return;
+        }
+
+        (ss.outside[indexB], ss.outside[indexA]) = (ss.outside[indexA], ss.outside[indexB]);
     }
 
     private void Check(GameState state)
