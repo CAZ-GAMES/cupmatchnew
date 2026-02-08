@@ -34,21 +34,4 @@ public class ObjectHandler : MonoBehaviour, IPointerClickHandler
             }
         }
     }
-
-    // public void SwapListPos()
-    // {
-    //     // get index of each object selected and change its position in outsideCups list
-    //     int indexA = GameManager.Instance.outsideCups.FindIndex(c => c == GameManager.Instance.clickedOn[0]);
-    //     int indexB = GameManager.Instance.outsideCups.FindIndex(c => c == GameManager.Instance.clickedOn[1]);
-
-    //     // check to see if items exist
-    //     if (indexA == -1 || indexB == -1)
-    //     {
-    //         Debug.LogError($"Object not found! indexA: {indexA}, indexB: {indexB}");
-    //         return;
-    //     }
-
-    //     (GameManager.Instance.outsideCups[indexB], GameManager.Instance.outsideCups[indexA]) =
-    //         (GameManager.Instance.outsideCups[indexA], GameManager.Instance.outsideCups[indexB]);
-    // }
 }
