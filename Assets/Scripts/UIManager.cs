@@ -46,6 +46,10 @@ public class UIManager : MonoBehaviour
         {
             moves.text = "Moves: " + GameManager.Instance.moves;
         }
+        else if (state == GameState.Win)
+        {
+            moves.text = "You Won in " + GameManager.Instance.moves + " moves!";
+        }
     }
 
     public void StartGame()
