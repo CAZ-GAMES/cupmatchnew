@@ -104,9 +104,34 @@ public class SwappingManager : MonoBehaviour
         if(state == GameState.Check)
         {
             print("Checking");
-            GameManager.Instance.moves++;
             GameManager.Instance.coolOff = true;
-            GameManager.Instance.UpdateGameState(GameState.Trying);
+
+            // Compare outside cups with inside cups by material
+            bool isMatch = true;
+            for (int i = 0; i < ss.outside.Count && i < ss.inside.Count; i++)
+            {
+                var outsideMat = ss.outside[i].GetComponent<Renderer>().sharedMaterial;
+                var insideMat = ss.inside[i].GetComponent<Renderer>().sharedMaterial;
+
+                if (outsideMat == insideMat)
+                {
+                    GameManager.Instance.correctMatches++;
+
+                } else
+                {
+                    isMatch = false;
+                }
+            }
+
+            if (isMatch)
+            {
+                GameManager.Instance.UpdateGameState(GameState.Win);
+            }
+            else
+            {
+                GameManager.Instance.moves++;
+                GameManager.Instance.UpdateGameState(GameState.Trying);
+            }
         }
     }
 }

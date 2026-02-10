@@ -35,6 +35,7 @@ public class UIManager : MonoBehaviour
     {
         GameManager.Instance.coolOff = false;
         GameManager.Instance.moves = 0;
+        GameManager.Instance.correctMatches = 0;
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         
     }
@@ -45,6 +46,11 @@ public class UIManager : MonoBehaviour
         if (state == GameState.Trying)
         {
             moves.text = "Moves: " + GameManager.Instance.moves;
+            moves.text += "\nCorrect Matches: " + GameManager.Instance.correctMatches;
+        }
+        else if (state == GameState.Win)
+        {
+            moves.text = "You Won in " + GameManager.Instance.moves + " moves!";
         }
     }
 
