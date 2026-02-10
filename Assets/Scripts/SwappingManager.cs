@@ -113,22 +113,23 @@ public class SwappingManager : MonoBehaviour
                 var outsideMat = ss.outside[i].GetComponent<Renderer>().sharedMaterial;
                 var insideMat = ss.inside[i].GetComponent<Renderer>().sharedMaterial;
 
-                if (outsideMat != insideMat)
+                if (outsideMat == insideMat)
+                {
+                    GameManager.Instance.correctMatches++;
+
+                } else
                 {
                     isMatch = false;
-                    break;
                 }
             }
 
             if (isMatch)
             {
-                print("Sequence matched! You win!");
                 GameManager.Instance.UpdateGameState(GameState.Win);
             }
             else
             {
                 GameManager.Instance.moves++;
-                print("Sequence does not match. Try again!");
                 GameManager.Instance.UpdateGameState(GameState.Trying);
             }
         }

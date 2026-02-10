@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public int moves;
     public bool coolOff = false;
     public List<GameObject> clickedOn = new();
+    public int correctMatches = 0;
 
     private void Awake()
     {
