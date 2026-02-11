@@ -9,6 +9,8 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField]
     TextMeshProUGUI moves;
+    [SerializeField]
+    TextMeshProUGUI amountCorrect;
 
 
     void Awake()
@@ -46,7 +48,6 @@ public class UIManager : MonoBehaviour
         if (state == GameState.Trying)
         {
             moves.text = "Moves: " + GameManager.Instance.moves;
-            moves.text += "\nCorrect Matches: " + GameManager.Instance.correctMatches;
         }
         else if (state == GameState.Win)
         {
@@ -62,6 +63,10 @@ public class UIManager : MonoBehaviour
     public void CheckButton()
     {
         if (GameManager.Instance.coolOff == false)
+        {
             GameManager.Instance.UpdateGameState(GameState.Check);
+            amountCorrect.enabled = true;
+            amountCorrect.text =  "Amount Correct: " + GameManager.Instance.correctMatches.ToString();
+        }
     }
 }

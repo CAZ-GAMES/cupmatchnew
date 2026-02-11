@@ -20,10 +20,7 @@ public class SwappingManager : MonoBehaviour
 
     void Start()
     {
-        foreach(GameObject x in ss.inside)
-        {
-            print(x);
-        }
+
     }
 
     // Update is called once per frame
@@ -103,7 +100,9 @@ public class SwappingManager : MonoBehaviour
     {
         if(state == GameState.Check)
         {
-            print("Checking");
+            // need to reset counter of correct matches so true number of correct is represented
+            GameManager.Instance.correctMatches = 0;
+
             GameManager.Instance.coolOff = true;
 
             // Compare outside cups with inside cups by material
