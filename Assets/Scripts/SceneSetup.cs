@@ -35,7 +35,7 @@ public class SceneSetup : MonoBehaviour
         }
         foreach(GameObject outsideCup in outside)
         {
-            Instantiate(outsideCup, new Vector3(posOutside[outsideCups].x,posOutside[outsideCups].y), Quaternion.identity, outCup);
+            Instantiate(outsideCup, new Vector3(posOutside[outsideCups].x,posOutside[outsideCups].y), outsideCup.transform.rotation, outCup);
             outsideCups++;
         }
     }
