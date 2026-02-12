@@ -200,10 +200,10 @@ MonoBehaviour:
   - {fileID: 9137023287238976946, guid: 108556eaa5c7641498b47ace7be34fa7, type: 3}
   - {fileID: 1365628057208695087, guid: facc1842acb584ee48ac64264c59e1c8, type: 3}
   outside:
-  - {fileID: 3272639230245780397, guid: 2d8b4ab95aa784149bfd44d4a3cda379, type: 3}
-  - {fileID: 1063791081257717257, guid: 49f2e95cd82cb45808adab58bde573b1, type: 3}
-  - {fileID: 9137023287238976946, guid: b851125aa4bc8439da5881efa192bee6, type: 3}
-  - {fileID: 1365628057208695087, guid: 4c42a3f5e4cc24689a75a89678e73799, type: 3}
+  - {fileID: 1592271733707560321, guid: de01e8844e7ff4db8858fadf92bfbf4a, type: 3}
+  - {fileID: 4028748445583125738, guid: f1fe5a0c7792e46d2a09104e705d7143, type: 3}
+  - {fileID: 7969184090942229873, guid: c4bcdc4861a014a21ae2014660805d2e, type: 3}
+  - {fileID: 4434975679986670338, guid: 94a8e6c3149094f32a6616fc8a39d3e0, type: 3}
   inCup: {fileID: 1328518904}
   outCup: {fileID: 1189783071}
 --- !u!4 &313992709
